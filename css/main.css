@@ -1,0 +1,26 @@
+.navbar, .card-body, .info{
+    background-color: #6f42c1;/*#7747a7;/*#4f5acf;*/
+}
+.nav-link, .card-body, .info{
+    color: white;
+}
+.nav-link:hover{
+    color: black;
+}
+.info{
+    height: 30px;
+    margin-bottom: -45px;
+}
+.head{
+    width: 60px;
+    height: 60px;
+}
+@media(max-width:767px){
+    .card{
+        height: 505px;
+        margin-bottom: 0px;
+    }
+     .info{
+        margin-bottom: -30px;
+    } 
+}

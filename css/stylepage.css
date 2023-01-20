@@ -1,0 +1,51 @@
+.navbar,
+.card-body, 
+.info{
+    background-color: #6f42c1;/*#7747a7;/*#4f5acf;*/
+}
+.nav-link, 
+.card-body, 
+.info{
+    color: white;
+}
+.nav-link:hover{
+    color: black;
+}
+.text{
+    color: #6f42c1;
+}
+.card{
+    border: none;
+}
+.btn{
+    width: 100%;
+    background-color: #6f42c1;
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+.head{
+    width: 50px;
+    height: 50px;
+}
+
+/**************************************/
+.scrolimg{
+    width: 50px;
+    height: 50px;
+}
+.scroll{
+    width: 100px;
+    height: 80px;
+    transition: 0.2s;
+    z-index: 99;
+    position:fixed;
+    bottom:0px;
+    right:-30px;
+    
+}
+.scroll:hover{
+    transform: scale(1.2)
+    
+}
