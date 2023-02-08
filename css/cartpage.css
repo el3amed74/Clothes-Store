@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-transform: capitalize;
+}
+input{
+    width: 50px;
+}
+thead{
+    background-color: #6f42c1;
+    color: white;
+    font-size: 25px;
+}
+.btn{
+    width: 100%;
+    background-color: #6f42c1;
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+th,td{
+    font-size: 20px;
+}
+@media(max-width:767px){
+
+}

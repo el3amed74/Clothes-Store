@@ -1,3 +1,6 @@
+*{
+    text-transform: capitalize;
+}
 .navbar,
 .card-body, 
 .info{
@@ -29,7 +32,9 @@
     width: 50px;
     height: 50px;
 }
-
+i{
+    cursor: pointer;
+}
 /**************************************/
 .scrolimg{
     width: 50px;
@@ -43,8 +48,8 @@
     position:fixed;
     bottom:0px;
     right:-30px;
-    
 }
+
 .scroll:hover{
     transform: scale(1.2)
     
