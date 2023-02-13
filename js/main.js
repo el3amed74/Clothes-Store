@@ -1,5 +1,7 @@
 const items = document.querySelectorAll("i"),
-    spans = document.querySelectorAll("span");
+    spans = document.querySelectorAll("span"),
+    form = document.querySelector(".forma");
+let tablebody = document.querySelector(".tbody");
 let Clothes = [];
 let price = [];
 let clickcounter = 0;
@@ -25,29 +27,12 @@ items.forEach(itm => {
         }
     })
 })
-
-let tablebody = document.querySelector(".tbody");
-function display() {
-/*inside table with loop over clothes must create
-    1- tr with class tr
-    2- inside each tr create 
-        1-td with vlu = ename
-        2-td with vlu = input num with clss m-1 and vlu = 1
-        3-td with vlu = eprice
-*/
-    for (let i = 0; i < Clothes.length; i++) {
-        let tr = document.createElement("tr");
-        for (let k = 0; k < 3; k++) {
-            let td = document.createElement("td");
-            let tdtext = document.createTextNode("Clothes"[i]);
-            td.appendChild(tdtext);
-            tr.appendChild(td);
-        }
-        tablebody.appendChild(tr);
-    }
-    console.log(Clothes.length);
-};
-display();
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    sessionStorage.setItem("clothes", JSON.stringify(Clothes));
+    sessionStorage.setItem("price", JSON.stringify(price));
+    window.location.href = "CartPage.html";
+})
 /***************** scroll btn ********************** */
 document.addEventListener('scroll', (e) => {
     let scrollTop = window.pageYOffset;
