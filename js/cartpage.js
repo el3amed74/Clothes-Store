@@ -1,11 +1,9 @@
 const tablebody = document.querySelector(".tbody"),
     ClothesName = JSON.parse(sessionStorage.getItem("clothes")),
     Clothesprice = JSON.parse(sessionStorage.getItem("price")),
-    inputs = document.querySelectorAll("input"),
-    butn = document.querySelector(".btn");
+    container = document.querySelector(".container"),
+    buybtn = document.querySelector(".btn");
 let totalprice = 0;
-// console.log(ClothesName, ClothesName.length);
-// console.log(Clothesprice, Clothesprice.length);
 
 for (let i = 0; i < ClothesName.length; i++) {
     let tr = document.createElement("tr");
@@ -13,22 +11,28 @@ for (let i = 0; i < ClothesName.length; i++) {
         switch (k) {
             case 0:
                 let td1 = document.createElement("td");
+                td1.classList.add("w-75");
                 let tdtext = document.createTextNode(ClothesName[i]);
                 td1.appendChild(tdtext);
                 tr.appendChild(td1);
             case 1:
-                let td2 = document.createElement("td");
-                let input = document.createElement("input");
-                input.type = "number";
-                input.value = 1;
-                // let tdtext2 = document.createTextNode('col2');
-                td2.appendChild(input);
-                tr.appendChild(td2);
-            case 2:
                 let td3 = document.createElement("td");
                 let tdtext3 = document.createTextNode(Clothesprice[i]);
                 td3.appendChild(tdtext3);
                 tr.appendChild(td3);
+
+            case 2:
+                let removebtn = document.createElement("td");
+                removebtn.classList.add("remove");
+                let btntxt = document.createTextNode(" X ");
+                removebtn.appendChild(btntxt);
+                tr.appendChild(removebtn);
+
+                removebtn.addEventListener("click", () => {
+                    tr.classList.add("d-none");
+                    let index = Clothesprice.indexOf(Clothesprice[i]);
+                    Clothesprice.splice(index, 1);
+                })
             default:
                 break;
         }
@@ -36,23 +40,32 @@ for (let i = 0; i < ClothesName.length; i++) {
     tablebody.appendChild(tr);
 }
 
-for (let p = 0; p < Clothesprice.length; p++)
-    totalprice += parseInt(Clothesprice[p].slice(0, 2));
-
-// console.log(totalprice);
 /********* create price row **********/
-let lasttr = document.createElement("tr");
+let removebtns = document.querySelectorAll(".remove");
+buybtn.addEventListener("click", () => {
 
-let td1 = document.createElement("td");
-td1.colSpan = 2;
-let tdtext = document.createTextNode("Total : ");
-td1.appendChild(tdtext);
-lasttr.appendChild(td1);
+    for (let p = 0; p < Clothesprice.length; p++) {
+        totalprice += parseInt(Clothesprice[p].slice(0, 2));
+    }
 
-let td2 = document.createElement("td");
-let tdt2ext = document.createTextNode(totalprice + '$');
-td2.appendChild(tdt2ext);
-lasttr.appendChild(td2);
+    buybtn.classList.add("d-none");
+    removebtns.forEach(rbtn => {
+        rbtn.classList.add("d-none");
+    })
+    let pricecontainer = document.createElement("div");
+    pricecontainer.classList.add("price");
 
-tablebody.appendChild(lasttr);
+    let pricebox = document.createElement("div");
+    let tdtext = document.createTextNode("Total price : ");
+    pricebox.appendChild(tdtext);
+    let tdtext2 = document.createTextNode(totalprice + '$');
+    pricebox.appendChild(tdtext2);
+    pricebox.classList.add("totalprice");
+    pricecontainer.appendChild(pricebox);
+
+    container.appendChild(pricecontainer);
+
+});
+
+
 /********* end price row**********/

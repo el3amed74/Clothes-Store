@@ -6,6 +6,7 @@ let Clothes = [];
 let price = [];
 let clickcounter = 0;
 let ename = '', eprice = '';
+
 items.forEach(itm => {
     itm.addEventListener("click", (e) => {
         var parent = e.target.parentNode;
@@ -13,17 +14,12 @@ items.forEach(itm => {
         eprice = e.target.previousElementSibling.innerText;
         if (!(e.target.classList.contains("checked"))) {
             e.target.classList.add("checked");
-            console.log("not contain this pice");
             Clothes.push(ename);
             price.push(eprice);
-            console.log("ename:[ " + Clothes + ']', "eprice:[ " + price + ']');
         } else {
-            console.log(" contain this pice");
             e.target.classList.remove("checked");
             Clothes.splice(Clothes.indexOf(ename), 1);
             price.splice(price.indexOf(eprice), 1);
-            console.log("ename:[ " + Clothes + ']', "eprice:[ " + price + ']');
-            console.log(e.target.classList.contains("checked"));
         }
     })
 })
@@ -40,7 +36,5 @@ document.addEventListener('scroll', (e) => {
     else document.querySelector('.scroll').style.display = "none"
 })
 function animateToTop() {
-
     window.scrollTo(0, 0);
-
 }
